@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Page Title</title>
+    <style type="text/css">
+        *{border:0 none; padding:0; margin:0; list-style:none; }
+        body{ margin: 200px;}
+        li{ margin: 10px; float:left;}
+        li a{
+            display:block;
+        }
+        #maxTips,
+        #facetips{
+            background:#ff0;
+        }
+    </style>
+</head>
+
+
+<body>
+
+
+<ul>
+    <li><a href="#" id="2"><img src="http://dummyimage.com/45x45/efefef/000" alt="" /></a></li>
+    <li><a href="#" id="32"><img src="http://dummyimage.com/45x45/e/000" alt="" /></a></li>
+    <li><a href="#" id="23"><img src="http://dummyimage.com/45x45/9/000" alt="" /></a></li>
+    <li><a href="#" id="244"><img src="http://dummyimage.com/45x45/efefef/000" alt="" /></a></li>
+    <li><a href="#" id="422"><img src="http://dummyimage.com/45x45/e/000" alt="" /></a></li>
+    <li><a href="#" id="52"><img src="http://dummyimage.com/45x45/9/000" alt="" /></a></li>
+    <li><a href="#" id="424"><img src="http://dummyimage.com/45x45/efefef/000" alt="" /></a></li>
+    <li><a href="#" id="42"><img src="http://dummyimage.com/45x45/e/000" alt="" /></a></li>
+    <li><a href="#" id="521"><img src="http://dummyimage.com/45x45/9/000" alt="" /></a></li>
+</ul>
+
+<div style="clear:both;"></div>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+<script type="text/javascript" src="tips.js"></script>
+<script type="text/javascript">
+
+    $(function(){
+        //传入cid: 容器id, dataurl: 数据接口
+        $('a').faceTips({'cid':'maxTips','dataurl':'test.php'});
+    })
+
+</script>
+
+
+
+</body>
+</html>
