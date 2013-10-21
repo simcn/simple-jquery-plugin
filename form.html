@@ -1,0 +1,115 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title>表单结构</title>
+	
+	<style>
+        .form{
+            background: #efefef;
+            padding:1% 0% 0% 0;
+            overflow: hidden;
+        }
+        
+        .form .row{
+            display: block;
+            position: relative;
+            margin: 0% 1% 1% 1% ;
+        }
+        
+        .form .row input{
+            border: 0 none;
+            width: 98%;
+            padding: .5em;
+            font-size: 1em;
+        }
+        
+        .form .row textarea{
+            border: 0 none;
+            width: 97.5%;
+            padding: .5em;
+            font-size: 1em;
+        }
+        
+        .form .row i{
+            display: block;
+            width: 40px;
+            height: 100%;
+            background: red;
+            position: absolute;
+            right: 50px;
+            top: 0px;
+            display: none;
+        }
+        
+        .form .row span{
+            width: 200px;
+            height: 34px;
+            position:absolute;
+            right: -10px;
+            top: 0px;
+            transition: all 0.3s ease-in-out;
+            font-size: .75em;
+            line-height: 34px;
+            padding: 0 10px;
+            opacity: 0;
+        }
+
+        .form .row:hover span{
+            display: block;
+            width:40%;
+            right:0;
+            transition: all 0.3s ease-in-out;
+            opacity: 1;
+        }
+        
+        .form .row button{
+            font: normal 1em/2 "Microsoft YaHei", Arial, Helvetica, sans-serif;
+            padding: 0 .75em;
+            border: 1px none;
+        }
+        
+        .form .green{
+            color: #fff;
+            background: #fdc44f;
+            transition: all 0.3s ease-in-out;            
+        }
+        
+        .form .green:hover{
+            background: #558629;
+        }
+        
+
+    </style>	
+	
+</head>
+<body>
+	
+	<div style="width:900px; margin-left:10%">
+        <h2>用户注册</h2>
+        <!-- form>div.form>div.row*3>input+i+span -->
+        <form action="">
+            <div class="form">
+                <div class="row">
+                    <input type="text" placeholder="用户名" />
+                    <i></i>
+                    <span>取个好记的英文名称</span>
+                </div>
+                <div class="row">
+                    <input type="text" placeholder="邮箱" />
+                    <i></i>
+                    <span>常用的邮箱</span>
+                </div>
+                <div class="row">
+                    <input type="text" placeholder="设置密码" />
+                    <i></i>
+                    <span>设置大于6位的密码有助于帐号安全</span>
+                </div>
+                <div class="row">
+                    <button class="green">用户注册</button>
+                </div>
+            </div>
+        </form>	
+	</div>
+</body>
+</html>
