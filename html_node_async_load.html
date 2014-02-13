@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>html节点异步加载</title>
+    <script charset='utf-8' type='text/javascript' src="jquery-1.7.min.js"></script>
+    <script charset='utf-8' type='text/javascript' src='http://dev.c-ctrip.com/common/js/gs_base.js'></script>
+
+    <style>
+        p{
+            height: 400px;
+        }
+        textarea.gs_async{ display: none; }
+        .ctrip_a1{ border: 1px solid #000;}
+    </style>
+   
+</head>
+
+<body>
+    
+
+<div class="ctrip_a1_frame cf">
+    <p>1</p>
+    <div class="ctrip_a1"><script type="text/javascript" id="zp_script_33" src="http://mcc.chinauma.net/static/scripts/p.js?id=33&w=230&h=60&sl=1&delay=5" zp_type="1"></script></textarea></div>
+    <p>2</p>
+    <div class="ctrip_a1"><textarea class="gs_async"><script type="text/javascript" id="zp_script_34" src="http://mcc.chinauma.net/static/scripts/p.js?id=34&w=230&h=60&sl=1&delay=5" zp_type="1"></script></textarea></div>
+    <p>3</p>
+    <div class="ctrip_a1"><textarea class="gs_async"><script type="text/javascript" id="zp_script_35" src="http://mcc.chinauma.net/static/scripts/p.js?id=35&w=230&h=60&sl=1&delay=5" zp_type="1"></script></textarea></div>
+    <p>4</p>
+    <div class="ctrip_a1"><textarea class="gs_async"><script type="text/javascript" id="zp_script_36" src="http://mcc.chinauma.net/static/scripts/p.js?id=36&w=230&h=60&sl=1&delay=5" zp_type="1"></script></textarea></div>
+</div>
+
+
+<button id="ttt">test</button>
+
+<script>
+    
+
+(function ($) {
+    /**
+     * script dom 节点异步加载
+     * @author chenwp <chenwp@ctrip.com>
+     */
+    $.fn.scriptNodeAsync = function (opts) {
+        opts = $.extend({
+            'color': '#fff'
+            ,top: 0
+        }, opts);
+        
+        //把 dom节点解析成数组结构
+        function str_dom(node) {
+            node = node.replace('<script','');
+            node = $.trim( node.replace('><\/script>','') );
+            var attr = node.split(' ');
+            var k =[],v=[],i=0;
+            var re = /(.*?)="(.*?)"/i;
+            var script = document.createElement('script');
+                script.async = true;
+            for(i in attr){
+                var temp = attr[i].match(re);
+                script.setAttribute( temp[1], temp[2] );
+            }
+            return script;
+        }
+        
+        return this.each(function () {
+            var $this = $(this);
+            var $frame = $(this).parent();            
+            var old_node = $.trim( $(this).val() );
+            var scriptNode = str_dom(old_node);
+            var textarea = $this[0]; //转化为原生对像
+            textarea.parentNode.insertBefore(scriptNode, textarea);
+            $this.remove();
+        });    
+    };
+    
+    //启动代码
+    $(function(){
+        //取可视区域
+        function get_body_size() {
+            var w = document.documentElement.clientWidth;
+            var h = document.documentElement.clientHeight;			
+            return { 'width':w, 'height':h }
+        }  
+        //判断是否显示
+        function setPos() {
+            var _height = get_body_size().height;
+            var _scrollTop = $(window).scrollTop();
+            $('textarea.gs_async').each(function(i){
+                var _top = $(this).parent().offset().top; //当前节点是隐藏的
+                var _view = _scrollTop +  _height; //当前可视高度
+                if (_view > _top ) {
+                    $(this).scriptNodeAsync(); //启动插件
+                }
+            });
+        }
+        var throttled = GS.throttle(setPos, 1000); //节流函数_来源于gs_base.js
+        $(window).scroll(throttled);    
+    });    
+    
+})(jQuery);
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS3动画</title>
+    
+    <style>
+  div
+{
+width:100px;
+height:100px;
+background:red;
+position:relative;
+
+}
+
+div:hover{
+    animation:myfirst 3s linear 0s infinite alternate;
+/* Firefox: */
+-moz-animation:myfirst 3s linear 0s infinite alternate;
+/* Safari and Chrome: */
+-webkit-animation:myfirst 1s linear 0s infinite alternate;
+/* Opera: */
+-o-animation:myfirst 10s linear 0s infinite alternate;
+}
+
+@keyframes myfirst
+{
+0%   {top:0px;}
+25%  {left:200px; top:0px;}
+50%  {left:200px; top:200px;}
+75%  {left:0px; top:200px;}
+100% {left:0px; top:0px;}
+}
+
+@-moz-keyframes myfirst /* Firefox */
+{
+0%   {background:red; left:0px; top:0px;}
+25%  {background:yellow; left:200px; top:0px;}
+50%  {background:blue; left:200px; top:200px;}
+75%  {background:green; left:0px; top:200px;}
+100% {background:red; left:0px; top:0px;}
+}
+
+@-webkit-keyframes myfirst /* Safari and Chrome */
+{
+0%   {top:5px;}
+25%  {top:0px;}
+50%  {top:5px;}
+75%  {top:0px;}
+100% {top:5px;}
+}
+
+@-o-keyframes myfirst /* Opera */
+{
+0%   {background:red; left:0px; top:0px;}
+25%  {background:yellow; left:200px; top:0px;}
+50%  {background:blue; left:200px; top:200px;}
+75%  {background:green; left:0px; top:200px;}
+100% {background:red; left:0px; top:0px;}
+}
+    </style>
+</head>
+<body>
+    
+    
+    <div class="ani"></div>
+    
+    
+</body>
+</html>

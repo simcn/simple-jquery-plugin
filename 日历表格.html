@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>日历表格</title>
+	<style>
+		
+		.calendar_table_frame{
+			background: #000;
+			width:735px;
+			clear: both;
+		}
+		
+		.calendar_table_frame dl{
+			display: block;
+			width:100%;
+		}
+		
+		.calendar_table_frame dd{
+		}
+		
+		.calendar_table_frame span{
+			display: block;
+			width: 100px;
+			height: 100px;
+			margin: 5px 5px 0 0;
+			background: #000;
+			color: #fff;
+			float: left;
+		}
+		
+		
+		
+		
+	</style>
+</head>
+<body>
+	<!-- 
+	数据来源
+	http://flights.ctrip.com/Domestic/home/LowestPriceCalendar/BJS/CKG?0.014526708517223597
+	-->
+	
+	<div class="cal">
+		<h2 class="calendar_table_title"></h2>
+		<div class="calendar_table_frame">
+		</div>
+		<a href="#" class="calendar_control_next">下一个月</a>
+		<a href="#" class="calendar_control_prev">上一个月</a>
+	</div>
+	
+    <script src="jquery-1.7.min.js"></script>
+    <script src="gs_calendar_table.js"></script>
+	
+	<script>
+		
+		$(function(){
+			
+			$('.cal').gs_calendar_table();
+			
+			/*
+			var data = [{a:1,b:1},{a:1,b:2},{a:2,b:2}];
+			var html = new Array([]);
+			var j=0;
+			for(i in data){				
+				var x = data[i].a;
+				if (x==1) {
+					html[j].push(data[i]);
+				}else{
+					j++;
+				}
+			}
+			console.log(html[0]);
+			console.log(html[1]);
+			*/
+			
+			
+		});
+		
+	</script>
+	
+</body>
+</html>

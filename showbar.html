@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		*{margin:0; padding: 0;}
+		body{
+			padding: 10px;
+		}
+		#box{
+			width:500px;
+			position: fixed;
+			height: 30px;
+			top:0;
+			display: none;
+		}
+		#boxbar{
+			position: relative;
+			background: #ccc;height: 30px;
+		}
+		#boxbar div{
+			position: absolute;
+		}
+		.red{background: red; height: 15px; z-index: 2;  top: 0; width:1%;}
+
+
+		#head{
+			height: 50px;
+		}
+		p{line-height: 4em;}
+	</style>	
+</head>
+<body>
+	<div id="head"></div>
+	<div id="box">
+		<div id="boxbar">
+			<div id="bar" class="red" style="width:1%"></div>
+		</div>
+	</div>
+	
+	<div id="doc">
+	<p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p>
+	</div>	
+
+	<div class="pl">		
+		<p>2</p><p>2</p><p>2</p><p>2</p><p>2</p><p>2</p><p>2</p><p>2</p><p>2</p><p>2</p><p>2</p><p>2</p><p>2</p><p>2</p><p>2</p><p>2</p><p>2</p>
+	</div>
+
+	<script src="http://youresource.c-ctrip.com/js/library/jquery-1.7.min.js" charset="utf-8"></script>
+	<script>
+		$(function() {
+
+			//游记内容高度
+			var docH = $('#doc').outerHeight(); 
+			//开始位置
+			var beginY = $('#doc').offset().top;
+			//结束位置
+			var endY = beginY + docH;
+			//滚动事件
+			function showTools(scroll_top){
+				if(scroll_top < beginY || scroll_top > endY ){
+					$('#box').hide();												
+				}else{
+					$('#box').show();
+					var barP = ( (scroll_top - beginY)  / docH )* 100 + '%'; //beginY=从初始位置
+					$('#bar').css({width:barP})					
+				}
+			}
+
+            $(window).scroll(function () {
+				var scroll_top = $(this).scrollTop();
+				//todo 需做节流处理
+				showTools(scroll_top);
+            });
+
+		});
+	</script>
+	
+</body>
+</html>

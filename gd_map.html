@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>高德地图演示</title>
+    <script src="http://webapi.amap.com/maps?v=1.2&key=d907e4500fa7ab0abb2384fc2a8ada49" type="text/javascript"></script>                  
+</head>
+<body>
+    
+    <div class="c" style="text-align: center;">
+        <div id="map" style="width:980px; height: 600px; margin: auto; "></div>
+    </div>
+    
+	
+	<button id="c">按</button>
+    
+<script type="text/javascript">  
+function map(){  
+  var position=new AMap.LngLat(116.404,39.915);//创建中心点坐标  
+  var mapObj=new AMap.Map("map",{center:position});//创建地图实例  
+}
+
+
+
+document.getElementById('c').onclick = function(){
+	map();
+};
+	
+
+</script>  
+    
+</body>
+</html>

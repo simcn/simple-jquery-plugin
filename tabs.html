@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    
+    <style>
+        .tab-title a{ font-size: 12px; color: #000; padding: 5px 10px; display:inline-block;}
+        .tab-title .active{ background: red; color: #fff;}
+        .gs-tab-content div{ display: none;}
+        .gs-tab-content div.active{ display: block; }
+        #a,#a1{ background: #ccc; color: #fff; padding: 10px; margin: 10px 0;}
+        #b,#b1{ background: #999; color: #fff; padding: 10px; margin: 10px 0;}
+        #c,#c1{ background: #666; color: #fff; padding: 10px; margin: 10px 0;}
+    </style>
+</head>
+<body>
+    <h2>例子1</h2>
+    <div class="tab-title" id="demo">
+        <ul>
+            <li class="active"><a href="#a">tab a</a></li>
+            <li><a href="#b">tab b</a></li>
+            <li><a href="#c">tab c</a></li>
+        </ul>
+    </div>
+    <div class="gs-tab-content">
+        <div id="a" class="active">content a</div>
+        <div id="b">content b</div>
+        <div id="c">content c</div>
+    </div>
+    
+    
+    <h2>例子2</h2>
+    
+    <div class="tab-title" id="demo2">
+        <a href="#a1" class="active">tab a1</a>
+        <a href="#b1">tab b1</a>
+        <a href="#c1">tab c1</a>
+    </div>
+    <div id="one">
+        <div id="a1" class="active">content a1</div>
+        <div id="b1">content b1</div>
+        <div id="c1">content c1</div>
+    </div>    
+    
+    
+    <script src="jquery-1.7.min.js"></script>
+    <script src="gs_tabs.js"></script>
+    
+    <script>
+        $(function(){
+            
+            //简单模式
+            $('#demo').gs_tabs(); 
+            
+            //完整模式
+            $('#demo2').gs_tabs({
+                 'title':'>a'       //监听 对向的子节点
+                ,'active':'active'  //当前选中节点增加class 可以修改
+                ,'content':'#one'
+                ,'callback':function(d){
+                    console.log(d);
+                }
+            });
+            
+        });
+    </script>
+    
+</body>
+</html>
