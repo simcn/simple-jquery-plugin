@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+	<style>
+		.boxone{
+			width:200px;
+
+		}
+		.middleline{
+			height: 100px;
+			margin: 10px;
+		}		
+		.box2{
+			width:160px;
+			background: #ecc;
+			margin: 10px 0;
+		}		
+		.middleline{
+			display: table-cell;	/* 表格模式展示，无宽度了，需要再加一层来处理，宽度的一些功能 */
+			vertical-align:middle;
+			text-align: left;
+		}
+		.box2 .blank{ display:inline; height:100%; width:0; vertical-align:middle; zoom:1;} /* 让ie居中 */
+		.box2 p{ display:inline; width:100%; vertical-align:middle; zoom:1;}		
+	</style>
+	<div class="boxone" >
+		<div class="box2">
+			<div class="middleline"><div class="blank"></div><p>我是一行的</p></div>
+		</div>
+		<div class="box2">
+			<div class="middleline"><div class="blank"></div><p>我是两行的居中我是两行的居中我是两行的</p></div>
+		</div>
+		<div class="box2">
+			<div class="middleline"><div class="blank"></div><p>我是多行的居中我是多行的居中我是多行的居中我是多行的居中我是多行的居中我是多行的居中我是多行的居中</p></div>
+		</div>
+	</div>
+	
+	<p>dom节点明显增加，非一般应用不建议考虑</p>
+	
+
+</body>
+</html>
